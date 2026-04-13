@@ -1,4 +1,4 @@
-create table store."user"
+create table users
 (
     id       bigserial
         constraint user_pk
@@ -18,7 +18,7 @@ create table addresses
     zip     varchar(255),
     user_id bigint
         constraint addresses_users_id_fk
-            references store."user"
+            references users
 );
 
 

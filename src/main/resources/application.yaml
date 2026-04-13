@@ -12,6 +12,8 @@ spring:
   flyway:
     enabled: true
 
+
+
 stripe:
   apiURL: https://api.stripe.com
   enabled: true
