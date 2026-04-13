@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: store
+  datasource:
+    url: jdbc:postgresql://localhost:5432/store
+    username: postgres
+    password: Mu01
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+  flyway:
+    enabled: true
+
+stripe:
+  apiURL: https://api.stripe.com
+  enabled: true
+  timeout: 3000
+  supported-currencies: IDQ, USD
+
+PaymentService:
+  paypal
+
+mailServer:
+  host: https://email.com
+  port: 8080
