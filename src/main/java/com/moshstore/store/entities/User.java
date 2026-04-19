@@ -1,10 +1,13 @@
 package com.moshstore.store.entities;
 
 import jakarta.persistence.*;
+import jdk.jfr.Timespan;
 import lombok.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Builder
 @ToString
@@ -12,7 +15,9 @@ import java.util.List;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
+
 @Entity
+
 @Table(name = "users")
 public class User {
 
@@ -44,5 +49,20 @@ public class User {
         address.setUser(null)   ;
     }
 
+    @ManyToMany
+    @JoinTable(
+            name = "user_tags",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id")
+    )
+
+    @Builder.Default
+    private Set<Tag> tags = new HashSet<>();
+
+    public void addTags(String tagss) {
+        var tag = new Tag(tagss);
+        tags.add(tag);
+        tag.getUsers().add(this);
+    }
 
 }
