@@ -2,5 +2,6 @@
 <project version="4">
   <component name="DataSourcePerFileMappings">
     <file url="file://$PROJECT_DIR$/.idea/queries/Query_2.sql" value="dbeaa021-843c-4d39-9447-227513029ccc" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/db/migration/V5__convert_foreignKey_from_user_id_to_id.sql" value="dbeaa021-843c-4d39-9447-227513029ccc" />
   </component>
 </project>

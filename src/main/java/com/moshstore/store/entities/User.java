@@ -35,13 +35,12 @@ public class User {
     private String password;
 
 
-    @OneToOne
-
+    @OneToOne(mappedBy = "user")
     private Profile profile;
 
 
+
     @OneToMany(mappedBy = "user")
-    @Builder.Default
     private List<Addresses> addresses = new ArrayList<>();
 
     private void addAddresses(Addresses address) {

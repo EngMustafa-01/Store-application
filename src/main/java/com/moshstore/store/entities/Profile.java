@@ -11,6 +11,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@ToString
 @Table(name = "profile")
 @Entity
 public class Profile {
@@ -18,8 +19,6 @@ public class Profile {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, name = "user_id")
-    private Long user_id;
 
     @Column(name = "bio")
     private String bio;
@@ -35,6 +34,8 @@ public class Profile {
 
     @OneToOne
     @JoinColumn(name = "id")
+    @MapsId
+    @ToString.Exclude
     private User user;
 
 }

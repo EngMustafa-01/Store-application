@@ -1,6 +1,7 @@
 package com.moshstore.store;
 
 import com.moshstore.store.entities.Addresses;
+import com.moshstore.store.entities.Profile;
 import com.moshstore.store.entities.Tag;
 import com.moshstore.store.entities.User;
 import org.springframework.boot.SpringApplication;
@@ -19,8 +20,11 @@ public class StoreApplication {
                 .password("ibrahim123")
                 .build();
 
+        var profile = Profile.builder()
+                        .bio("Bio description").build();
 
-        user.addTags("tag1");
+        user.setProfile(profile);
+
         System.out.println(user);
     }
 
