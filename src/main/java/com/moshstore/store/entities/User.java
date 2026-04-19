@@ -34,9 +34,14 @@ public class User {
     @Column(nullable = false,name = "password")
     private String password;
 
+
+    @OneToOne
+
+    private Profile profile;
+
+
     @OneToMany(mappedBy = "user")
     @Builder.Default
-
     private List<Addresses> addresses = new ArrayList<>();
 
     private void addAddresses(Addresses address) {

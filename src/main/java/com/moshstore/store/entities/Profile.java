@@ -33,4 +33,8 @@ public class Profile {
     @Column(name = "loyalty_points")
     private int loyalty_points;
 
+    @OneToOne
+    @JoinColumn(name = "id")
+    private User user;
+
 }
