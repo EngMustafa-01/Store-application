@@ -1,8 +1,6 @@
 package com.moshstore.store;
 
-import com.moshstore.store.entities.Addresses;
 import com.moshstore.store.entities.Profile;
-import com.moshstore.store.entities.Tag;
 import com.moshstore.store.entities.User;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

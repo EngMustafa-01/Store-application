@@ -1,7 +1,6 @@
 package com.moshstore.store.entities;
 
 import jakarta.persistence.*;
-import jdk.jfr.Timespan;
 import lombok.*;
 
 import java.util.ArrayList;
@@ -38,8 +37,6 @@ public class User {
     @OneToOne(mappedBy = "user")
     private Profile profile;
 
-
-
     @OneToMany(mappedBy = "user")
     private List<Addresses> addresses = new ArrayList<>();
 
@@ -59,7 +56,6 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "tag_id")
     )
-
     @Builder.Default
     private Set<Tag> tags = new HashSet<>();
 
@@ -68,5 +64,14 @@ public class User {
         tags.add(tag);
         tag.getUsers().add(this);
     }
+
+    @ManyToMany
+    @JoinTable(
+            name = "wishlist",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "product_id")
+    )
+    @Builder.Default
+    private Set<Product> wishlist = new HashSet<>();
 
 }

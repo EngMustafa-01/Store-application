@@ -1,15 +1,19 @@
 package com.moshstore.store.entities;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
+@Builder
 @Setter
 @Entity
 @Table(name = "products")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,4 +34,11 @@ public class Product {
     private Category category;
 
 
+    @ManyToMany(mappedBy = "products")
+    @ToString.Exclude
+    private Set<User> users = new HashSet<>();
+
+    public Product(String name) {
+        this.name = name;
+    }
 }
