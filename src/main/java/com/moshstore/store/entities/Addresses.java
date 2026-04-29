@@ -29,10 +29,8 @@ public class Addresses {
     @Column(nullable = false, name = "state")
     private String state;
 
-    @Column(nullable = false, name = "user_id")
-    private String user_id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     @ToString.Exclude
     private User user;

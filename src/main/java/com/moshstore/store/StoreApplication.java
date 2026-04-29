@@ -2,6 +2,10 @@ package com.moshstore.store;
 
 import com.moshstore.store.entities.Profile;
 import com.moshstore.store.entities.User;
+import com.moshstore.store.repositories.AddressRepository;
+import com.moshstore.store.repositories.UserRepository;
+import com.moshstore.store.services.AddressService;
+import com.moshstore.store.services.UserService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -11,19 +15,10 @@ import org.springframework.context.ConfigurableApplicationContext;
 public class StoreApplication {
 
     public static void main(String[] args) {
-        var user = User.builder()
-                .id(1L)
-                .name("Ibrahim")
-                .email("ibrahim@gmail.com")
-                .password("ibrahim123")
-                .build();
 
-        var profile = Profile.builder()
-                        .bio("Bio description").build();
+        ApplicationContext context = SpringApplication.run(StoreApplication.class, args);
+        var service =  context.getBean(UserService.class);
 
-        user.setProfile(profile);
-
-        System.out.println(user);
-    }
+        }
 
 }

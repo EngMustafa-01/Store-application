@@ -4,9 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
-
 
 @Getter
 @Setter
@@ -34,10 +31,9 @@ public class Profile {
     @Column(name = "loyalty_points")
     private int loyalty_points;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id")
     @MapsId
-    @ToString.Exclude
     private User user;
 
 }

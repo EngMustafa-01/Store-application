@@ -34,18 +34,20 @@ public class User {
     private String password;
 
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE)
     private Profile profile;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST,  CascadeType.REMOVE})
+    @ToString.Exclude
+    @Builder.Default
     private List<Addresses> addresses = new ArrayList<>();
 
-    private void addAddresses(Addresses address) {
+    public void addAddresses(Addresses address) {
         addresses.add(address);
         address.setUser(this);
     }
 
-    private void removeAddresses(Addresses address) {
+    public void removeAddresses(Addresses address) {
         addresses.remove(address);
         address.setUser(null)   ;
     }
@@ -57,6 +59,7 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "tag_id")
     )
     @Builder.Default
+    @ToString.Exclude
     private Set<Tag> tags = new HashSet<>();
 
     public void addTags(String tagss) {
@@ -72,6 +75,7 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "product_id")
     )
     @Builder.Default
+    @ToString.Exclude
     private Set<Product> wishlist = new HashSet<>();
 
 }
